@@ -1,0 +1,12 @@
+{
+  "name": "spec-to-ship",
+  "version": "1.0.0",
+  "description": "Complete spec-to-ship workflow for Claude Code. PRD writing, implementation planning, autonomous coding (Ralph loops), PR review, and issue cycling. Based on Matt Pocock's Ralph methodology.",
+  "author": {
+    "name": "Paddy Davies"
+  },
+  "homepage": "https://github.com/paddydavies/spec-to-ship",
+  "repository": "https://github.com/paddydavies/spec-to-ship",
+  "license": "MIT",
+  "keywords": ["ralph", "workflow", "prd", "tdd", "code-review", "autonomous", "spec-to-ship"]
+}

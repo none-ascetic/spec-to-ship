@@ -1,0 +1,10 @@
+{
+  "plugins": [
+    {
+      "name": "spec-to-ship",
+      "version": "1.0.0",
+      "description": "Complete spec-to-ship workflow: PRD → Plan → Issues → Ralph → Review → Cycle",
+      "source": "."
+    }
+  ]
+}

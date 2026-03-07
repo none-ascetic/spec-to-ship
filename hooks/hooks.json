@@ -1,0 +1,28 @@
+{
+  "hooks": {
+    "TeammateIdle": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$(dirname \"$0\")/../hooks/scripts/teammate-idle.sh\"",
+            "timeout": 5000
+          }
+        ]
+      }
+    ],
+    "TaskCompleted": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$(dirname \"$0\")/../hooks/scripts/task-completed.sh\"",
+            "timeout": 5000
+          }
+        ]
+      }
+    ]
+  }
+}
