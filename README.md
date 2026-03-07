@@ -26,7 +26,7 @@ A Claude Code plugin that packages the complete spec-to-ship development workflo
 
 ```bash
 # Install from GitHub
-claude plugin install spec-to-ship --marketplace https://github.com/paddydavies/spec-to-ship
+claude plugin install spec-to-ship --marketplace https://github.com/none-ascetic/spec-to-ship
 
 # Or use locally
 claude --plugin-dir /path/to/spec-to-ship
@@ -126,7 +126,7 @@ bash plans/afk-claude.sh 15
 
 - **Ralph methodology:** [Matt Pocock / AI Hero](https://www.aihero.dev)
 - **"Design It Twice":** John Ousterhout, *A Philosophy of Software Design*
-- **Plugin:** Paddy Davies
+- **Plugin:** [none-ascetic](https://github.com/none-ascetic)
 
 ## License
 
