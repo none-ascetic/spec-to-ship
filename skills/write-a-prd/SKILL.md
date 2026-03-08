@@ -21,6 +21,15 @@ Check with the user that these modules match their expectations. Check with the 
 
 5. Once you have a complete understanding of the problem and solution, use the template below to write the PRD. The PRD should be submitted as a GitHub issue.
 
+Before creating the issue, check existing labels and ensure a `PRD` label exists:
+
+```bash
+gh label list --limit 100
+gh label create "PRD" --color "5319E7" --description "Product Requirements Document" 2>/dev/null || true
+```
+
+Apply the `PRD` label when creating the issue: `gh issue create --label "PRD" ...`
+
 <prd-template>
 
 ## Problem Statement

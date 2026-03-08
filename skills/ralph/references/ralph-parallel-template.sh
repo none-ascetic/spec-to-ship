@@ -1,16 +1,23 @@
 #!/bin/bash
 # Ralph Parallel — one worktree agent per issue, auto-PR on completion
 # Uses native git worktrees via `claude -p --worktree`
-# Usage: bash plans/ralph-parallel.sh 26 27 28
+# Usage: bash plans/ralph-parallel.sh [--model sonnet|opus|haiku] <issue_numbers...>
 
 set -e
 
 # Force OAuth — remove this line if using API key authentication
 unset ANTHROPIC_API_KEY
 
+MODEL="sonnet"
+if [[ "$1" == "--model" ]]; then
+  MODEL="$2"
+  shift 2
+fi
+
 if [ $# -eq 0 ]; then
-  echo "Usage: $0 <issue_numbers...>"
+  echo "Usage: $0 [--model sonnet|opus|haiku] <issue_numbers...>"
   echo "Example: $0 26 27 28"
+  echo "Example: $0 --model opus 26 27 28"
   exit 1
 fi
 
@@ -58,7 +65,7 @@ if [ "$overlap_found" = true ]; then
   done
   echo ""
   echo "Parallel agents modifying the same files will create merge conflicts."
-  echo "Consider using: bash plans/ralph-sequential.sh <batch_size>"
+  echo "Consider using: bash plans/ralph-sequential.sh <batch_size> <model>"
   echo ""
   read -r -p "Continue anyway? [y/N] " response
   if [[ ! "$response" =~ ^[Yy]$ ]]; then
@@ -96,6 +103,7 @@ for issue_num in "$@"; do
       || echo "No RALPH commits found")
 
     cat <<PROMPT | claude -p \
+      --model "$MODEL" \
       --worktree "issue-${issue_num}" \
       --output-format stream-json --verbose \
       --allowedTools "Bash,Read,Write,Edit,Glob,Grep,WebSearch,WebFetch" \

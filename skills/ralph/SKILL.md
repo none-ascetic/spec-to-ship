@@ -86,10 +86,18 @@ Run a single HITL (Human In The Loop) iteration inside this interactive session:
 AFK mode runs autonomously outside Claude Code via a bash script. Show the user the command:
 
 ```bash
-bash plans/ralph-sequential.sh <batch_size>       # sequential worktree loop
-bash plans/ralph-parallel.sh <issue_numbers>      # parallel (one worktree per issue)
-bash plans/afk-claude.sh <iterations>             # bare-metal (no worktree)
+bash plans/ralph-sequential.sh <batch_size> <model>           # sequential worktree loop
+bash plans/ralph-parallel.sh --model <model> <issue_numbers>  # parallel (one worktree per issue)
+bash plans/afk-claude.sh <iterations>                         # bare-metal (no worktree)
 ```
+
+**Model selection:** Choose based on issue complexity:
+
+| Model | When to use | Examples |
+|-------|-------------|---------|
+| `haiku` | Trivial changes — comments, renames, single-line fixes | Adding a comment, renaming a variable |
+| `sonnet` (default) | Standard implementation — most issues | Typical vertical slices, schema changes, API endpoints |
+| `opus` | Complex architecture — multi-file design decisions, tricky logic | New subsystems, issues touching 5+ files with interdependencies |
 
 **Choosing parallel vs sequential:** Check whether issues touch overlapping
 files. If they do, use sequential. Parallel is only safe when issues modify
